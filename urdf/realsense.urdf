@@ -4,9 +4,11 @@
 
   <link name="base_link"/>
 
-  <link name="camera_bottom_screw_frame">
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+  <link name="camera_bottom_screw_frame"></link>
+
+  <link name="camera_link">
+     <visual>
+      <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
       <geometry>
         <mesh filename="file://$(find realsense2_description)/meshes/d435.dae" />
       </geometry>
@@ -17,8 +19,6 @@
       </geometry>
     </collision>
   </link>
-
-  <link name="camera_link"></link>
 
   <link name="camera_depth_frame"></link>
 
@@ -36,66 +36,79 @@
 
   <link name="camera_right_ir_optical_frame"></link>
 
+  <!-- <link name="base_camera_link"></link> -->
+  <link name="realsense_link"></link>
 
-   <joint name="camera_joint" type="fixed">
-    <parent link="base_link" />
+  <joint name="camera_joint" type="fixed">
+    <parent link="realsense_link" />
     <child link="camera_bottom_screw_frame" />
-    <pose xyz="0.4 0 0.25" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
   </joint>
 
   <joint name="camera_link_joint" type="fixed">
     <parent link="camera_bottom_screw_frame" />
     <child link="camera_link" />
-    <pose xyz="0 0.0175 0.0125 " rpy="0 0 0" />
+    <origin xyz="0 0.0175 0.0125 " rpy="0 0 0" />
   </joint>
 
   <joint name="camera_depth_joint" type="fixed">
     <parent link="camera_link" />
     <child link="camera_depth_frame" />
-    <pose xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
   </joint>
 
   <joint name="camera_depth_optical_joint" type="fixed">
     <parent link="camera_depth_frame" />
     <child link="camera_depth_optical_frame" />
-    <pose xyz="0 0 0 " rpy="-1.57 0 -1.57" />
+    <origin xyz="0 0 0 " rpy="-1.57 0 -1.57" />
   </joint>
 
   <joint name="camera_color_joint" type="fixed">
     <parent link="camera_depth_frame" />
     <child link="camera_color_frame" />
-    <pose xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
   </joint>
 
   <joint name="camera_color_optical_joint" type="fixed">
     <parent link="camera_color_frame" />
     <child link="camera_color_optical_frame" />
-    <pose xyz="0 0 0 " rpy="-1.57 0 -1.57" />
+    <origin xyz="0 0 0 " rpy="-1.57 0 -1.57" />
   </joint>
 
   <joint name="camera_left_ir_joint" type="fixed">
     <parent link="camera_depth_frame" />
     <child link="camera_left_ir_frame" />
-    <pose xyz="0 0 0 " rpy="0 0 0 " />
+    <origin xyz="0 0 0 " rpy="0 0 0 " />
   </joint>
 
   <joint name="camera_left_ir_optical_joint" type="fixed">
     <parent link="camera_left_ir_frame" />
     <child link="camera_left_ir_optical_frame" />
-    <pose xyz="0 0 0 " rpy="-1.57 0 -1.57" />
+    <origin xyz="0 0 0 " rpy="-1.57 0 -1.57" />
   </joint>
 
   <joint name="camera_right_ir_joint" type="fixed">
     <parent link="camera_depth_frame" />
     <child link="camera_right_ir_frame" />
-    <pose xyz="0 -0.050 0 " rpy="0 0 0" />
+    <origin xyz="0 -0.050 0 " rpy="0 0 0" />
   </joint>
 
   <joint name="camera_right_ir_optical_joint" type="fixed">
     <parent link="camera_right_ir_frame" />
     <child link="camera_right_ir_optical_frame" />
+    <origin xyz="0 0 0 " rpy="-1.57 0 -1.57" />
+  </joint>
+
+  <joint name="realsense_joint" type="fixed">
+    <parent link="base_link"></parent>
+    <child link="realsense_link"></child>
     <pose xyz="0 0 0 " rpy="-1.57 0 -1.57" />
   </joint>
 
+  <!-- <joint name="base_camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_camera_link"/>
+    <origin xyz="0.039 -0.02958054 0.0915" rpy="0 0 0"/>
+  </joint> -->
 
 </robot>

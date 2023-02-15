@@ -2,7 +2,7 @@
 <sdf version="1.6">
   <model name="realsense_camera">
     <link name="realsense_link">
-      <pose>0.4 0 0.25 0 0 0</pose>
+      <pose>0 0 0.25 0 0 0</pose>
       <visual name="realsense_link_visual">
         <pose>0 0 0 -1.57 0 -1.57</pose>
         <geometry>
@@ -124,7 +124,7 @@
     <joint name="realsense_joint" type="fixed">
       <parent>base_link</parent>
       <child>realsense_link</child>
-      <pose>0.4 0 0.4 0 0 0</pose>
+      <pose>0.4 0 0.4 -1.57 0 -1.57</pose>
     </joint>
 
     <plugin name="camera" filename="librealsense_gazebo_plugin.so">
