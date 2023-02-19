@@ -36,7 +36,6 @@
 
   <link name="camera_right_ir_optical_frame"></link>
 
-  <!-- <link name="base_camera_link"></link> -->
   <link name="realsense_link"></link>
 
   <joint name="camera_joint" type="fixed">
@@ -104,11 +103,5 @@
     <child link="realsense_link"></child>
     <pose xyz="0 0 0 " rpy="-1.57 0 -1.57" />
   </joint>
-
-  <!-- <joint name="base_camera_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="base_camera_link"/>
-    <origin xyz="0.039 -0.02958054 0.0915" rpy="0 0 0"/>
-  </joint> -->
 
 </robot>
